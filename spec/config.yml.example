@@ -1,0 +1,6 @@
+mondrian:
+  jdbc_driver_path: "/usr/local/Cellar/tomcat/7.0.6//libexec/common/endorsed/mysql-connector-java-5.1.15-bin"
+  connection_string: "jdbc:mondrian:JdbcDrivers=com.mysql.jdbc.Driver;Jdbc=jdbc:mysql://localhost/mondrian_foodmart?user=root;Catalog=file:spec/fixtures/FoodMart.xml;"
+
+xmla:
+  connection_string: "jdbc:xmla:Server=http://127.0.0.1:8080/mondrian/xmla;Catalog=FoodMart;"
