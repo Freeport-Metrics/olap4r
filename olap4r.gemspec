@@ -29,6 +29,7 @@ Gem::Specification.new do |s|
     "lib/olap4r/connection.rb",
     "lib/olap4r/query_builder.rb",
     "lib/olap4r/rowset.rb",
+    "olap4r.gemspec",
     "spec/config.yml.example",
     "spec/connection_spec.rb",
     "spec/fixtures/FoodMart.xml",
