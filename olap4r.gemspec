@@ -46,6 +46,7 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+      s.add_development_dependency(%q<jruby-openssl>, [">= 0"])
       s.add_development_dependency(%q<rspec>, ["~> 2.11.0"])
       s.add_development_dependency(%q<yard>, ["~> 0.8.2.1"])
       s.add_development_dependency(%q<bundler>, ["~> 1.1.0"])
@@ -53,6 +54,7 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<olap4r-mondrian>, ["~> 0.1.0"])
       s.add_development_dependency(%q<olap4r-xmla>, ["~> 0.1.0"])
     else
+      s.add_dependency(%q<jruby-openssl>, [">= 0"])
       s.add_dependency(%q<rspec>, ["~> 2.11.0"])
       s.add_dependency(%q<yard>, ["~> 0.8.2.1"])
       s.add_dependency(%q<bundler>, ["~> 1.1.0"])
@@ -61,6 +63,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<olap4r-xmla>, ["~> 0.1.0"])
     end
   else
+    s.add_dependency(%q<jruby-openssl>, [">= 0"])
     s.add_dependency(%q<rspec>, ["~> 2.11.0"])
     s.add_dependency(%q<yard>, ["~> 0.8.2.1"])
     s.add_dependency(%q<bundler>, ["~> 1.1.0"])
