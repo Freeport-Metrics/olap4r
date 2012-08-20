@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Filip Tepper"]
-  s.date = "2012-08-17"
+  s.date = "2012-08-20"
   s.description = "olap4j wrapper for JRuby"
   s.email = "filip@tepper.pl"
   s.extra_rdoc_files = [
