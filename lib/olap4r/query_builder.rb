@@ -1,7 +1,7 @@
 module Olap
   class QueryBuilder
     def initialize
-      @select = { :columns => [], :rows => [] }
+      @select = {:columns => [], :rows => []}
       @from = nil
       @conditions = []
     end
@@ -49,13 +49,16 @@ module Olap
       field
     end
 
+    def extract_hierarchy(field)
+      field.match(/\[([^\]]+)\]/)[0]
+    end
+
     def build_axis axis
       return nil if @select[axis].empty?
 
       hierarchies = {}
       @select[axis].each do |field|
-        hierarchy = field.match(/\[([^\]]+)\]/)[0]
-
+        hierarchy = extract_hierarchy(field)
         hierarchies[hierarchy] = [] if hierarchies[hierarchy].nil?
         hierarchies[hierarchy].push field
       end
@@ -102,11 +105,25 @@ module Olap
       crossjoined
     end
 
+    def build_conditions
+      filters_by_hierarchy = @conditions.inject({}) { |hash, c|
+        hierarchy = extract_hierarchy(c)
+        if !hash[hierarchy] then
+          hash[hierarchy] = [c]
+        else
+          hash[hierarchy] << c
+        end
+        hash
+      }
+      filters_by_hierarchy.collect { |k, v| (v.size > 1) ? "{#{v.join(', ')}}" : v }.join(', ')
+    end
+
     def build_query
       query = []
 
       columns = build_axis :columns
       rows = build_axis :rows
+
 
       unless rows.nil? && columns.nil?
         query << "SELECT"
@@ -119,7 +136,7 @@ module Olap
       end
 
       query << "FROM #{@from}" unless @from.nil?
-      query << "WHERE ( #{@conditions.join ", "} )" if @conditions.any?
+      query << "WHERE ( #{build_conditions} )" if @conditions.any?
 
       query.join " "
     end

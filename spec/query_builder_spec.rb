@@ -112,6 +112,12 @@ describe Olap::QueryBuilder do
       query_builder.to_s.should == "WHERE ( [Measures].[Unit Sales], [Store].[All Stores] )"
     end
 
+
+    it "adds multiple where conditions correctly for conditions from the same dimension" do
+      query_builder.where "[Measures].[Unit Sales]", "[Store].[All Stores].[USA]", "[Store].[All Stores].[Canada]"
+      query_builder.to_s.should == "WHERE ( [Measures].[Unit Sales], {[Store].[All Stores].[USA], [Store].[All Stores].[Canada]} )"
+    end
+
     it "builds the whole query with chaining" do
       query_builder.select(:columns, "[Store].[All Stores]", "[Store].[All Stores].CHILDREN").
         select(:rows, "[Measures].[Unit Sales]", "[Measures].[Sales Count]").
