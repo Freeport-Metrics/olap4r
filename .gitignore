@@ -44,3 +44,7 @@ pkg
 spec/config.yml
 
 .rvmrc
+
+#intellij
+.idea
+*.iml
