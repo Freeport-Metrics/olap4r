@@ -109,13 +109,13 @@ describe Olap::QueryBuilder do
 
     it "adds multiple where conditions" do
       query_builder.where "[Measures].[Unit Sales]", "[Store].[All Stores]"
-      query_builder.to_s.should == "WHERE ( [Measures].[Unit Sales], [Store].[All Stores] )"
+      query_builder.to_s.should == "WHERE ( [Measures].[Unit Sales] * [Store].[All Stores] )"
     end
 
 
     it "adds multiple where conditions correctly for conditions from the same dimension" do
       query_builder.where "[Measures].[Unit Sales]", "[Store].[All Stores].[USA]", "[Store].[All Stores].[Canada]"
-      query_builder.to_s.should == "WHERE ( [Measures].[Unit Sales], {[Store].[All Stores].[USA], [Store].[All Stores].[Canada]} )"
+      query_builder.to_s.should == "WHERE ( [Measures].[Unit Sales] * {[Store].[All Stores].[USA], [Store].[All Stores].[Canada]} )"
     end
 
     it "builds the whole query with chaining" do

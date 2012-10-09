@@ -115,7 +115,7 @@ module Olap
         end
         hash
       }
-      filters_by_hierarchy.collect { |k, v| (v.size > 1) ? "{#{v.join(', ')}}" : v }.join(', ')
+      filters_by_hierarchy.collect { |k, v| (v.size > 1) ? "{#{v.join(', ')}}" : v }.join(' * ')
     end
 
     def build_query

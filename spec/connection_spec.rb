@@ -95,6 +95,24 @@ shared_examples_for "an Olap::Connection driver" do
       end
     end
 
+	context "#execute query with conditions" do
+	  let(:cellset) { connection.execute "SELECT { [Department] } ON COLUMNS, \
+					{ [Position] } ON ROWS \
+			FROM [HR] \
+			WHERE ( {[Time].[1997].[Q1], [Time].[1997].[Q2], [Time].[1998].[Q1]} \
+					* {[Employees].[Sheri Nowmer].[Maya Gutierrez], [Employees].[Sheri Nowmer].[Darren Stanz]} \
+					* [Pay Type].[Hourly]  \
+					* [Store Type].[Small Grocery] )" }
+					
+	  it "returns Olap::CellSet instance for successful queries" do
+       	cellset.should be_a(Olap::CellSet)
+      end
+      
+      it "returns cellset formatted values" do
+        cellset.values(:value).should =~ [[10.309]]
+      end
+    end
+
     context "#execute" do
       let(:cellset) { connection.execute "SELECT [Measures].[Unit Sales] ON COLUMNS, [Store] ON ROWS FROM [Sales]" }
 
