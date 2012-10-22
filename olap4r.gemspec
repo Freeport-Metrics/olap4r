@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "olap4r"
-  s.version = "0.1.0"
+  s.version = "0.1.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Filip Tepper"]
-  s.date = "2012-08-20"
+  s.date = "2012-10-22"
   s.description = "olap4j wrapper for JRuby"
   s.email = "filip@tepper.pl"
   s.extra_rdoc_files = [
@@ -39,7 +39,7 @@ Gem::Specification.new do |s|
   s.homepage = "http://github.com/Freeport-Metrics/olap4r"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.24"
+  s.rubygems_version = "1.8.23"
   s.summary = "olap4j wrapper for JRuby"
 
   if s.respond_to? :specification_version then
