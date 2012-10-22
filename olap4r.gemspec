@@ -39,7 +39,7 @@ Gem::Specification.new do |s|
   s.homepage = "http://github.com/Freeport-Metrics/olap4r"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.23"
+  s.rubygems_version = "1.8.24"
   s.summary = "olap4j wrapper for JRuby"
 
   if s.respond_to? :specification_version then
