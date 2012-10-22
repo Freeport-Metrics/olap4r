@@ -32,6 +32,10 @@ Write tests, write code. If you're ready to release a new version __first__ comm
 
     rake version:bump:patch
 
+Release it (make sure that you are using JRuby).
+
+    rake release
+
 To pull new gem into application switch to the same exact Ruby and gemset that you're using in your application, ie. if you're using `rvm jruby@myapp` for your app then use it to install this gem too.
 
     bundle install
