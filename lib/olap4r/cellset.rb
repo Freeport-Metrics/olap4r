@@ -15,7 +15,7 @@ module Olap
               members << {
                 :name => member.get_caption,
                 :unique_name => member.get_unique_name,
-                :drillable => member.get_child_members.size > 0
+                :drillable => member.get_child_member_count > 0
               }
             end
           end
